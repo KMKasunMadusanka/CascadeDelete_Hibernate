@@ -1,4 +1,4 @@
-package com.TestApplication;
+package com.TestApplication.DB_Entity_Classes;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,6 +18,16 @@ public class customerdetails {
 
     public String getCustomerId() {
         return customerId;
+    }
+
+    @Override
+    public String toString() {
+        return "customerdetails{" +
+                "customerId='" + customerId + '\'' +
+                ", customerName='" + customerName + '\'' +
+                ", address='" + address + '\'' +
+                ", incomeMethod='" + incomeMethod + '\'' +
+                '}';
     }
 
     public String getCustomerName() {
