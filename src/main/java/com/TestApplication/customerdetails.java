@@ -1,10 +1,16 @@
 package com.TestApplication;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Created by kmkmadusanka on 8/15/2017.
  */
+
+@Entity
 public class customerdetails {
 
+	@Id
     private String customerId;
     private  String customerName;
     private  String address;

@@ -1,5 +1,7 @@
 package com.TestApplication;
 
+import javax.transaction.Transaction;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -20,11 +22,14 @@ public class App {
         cd.setIncomeMethod("job");
 
 
-        Configuration cnf = new Configuration();
+        Configuration cnf = new Configuration().configure().addAnnotatedClass(customerdetails.class);
 
         SessionFactory scnFac = cnf.buildSessionFactory();
         Session session = scnFac.openSession();
 
+        
+        Transaction tr = session.beginTransaction();
+        
         session.save(cd);
 
     }
