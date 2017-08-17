@@ -1,4 +1,3 @@
-#cascae example in SQL
 
 create table employee(
 
