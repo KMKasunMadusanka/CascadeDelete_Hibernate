@@ -110,7 +110,7 @@ public class App {
 
 //        SQLQuery quearyText = session.createSQLQuery("delete from University  where UniId=111");
 //        quearyText.executeUpdate();
-       // Object result = quearyText.uniqueResult();
+
 
 
 
