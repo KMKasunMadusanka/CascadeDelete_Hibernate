@@ -2,7 +2,21 @@ package com.TestApplication.Hibernate_Classes;
 
 //import javax.transaction.Transaction;
 
+import com.TestApplication.DB_Entity_Classes.Computer;
+import com.TestApplication.DB_Entity_Classes.Student;
+import com.TestApplication.DB_Entity_Classes.University;
 import com.TestApplication.DB_Entity_Classes.customerdetails;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.service.ServiceRegistryBuilder;
+import sun.security.x509.AttributeNameEnumeration;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -47,11 +61,62 @@ public class App {
 
         //=================== fetch data from db================
 
-        SelectAllRecords s =  new SelectAllRecords();
+//        SelectAllRecords s =  new SelectAllRecords();
+//
+//        for (Object data : s.getAllRecordData("customerdetails",customerdetails.class)){
+//            System.out.println(data);
+//        }
 
-        for (Object data : s.getAllRecordData("customerdetails",customerdetails.class)){
-            System.out.println(data);
-        }
+        //===============Set Data to one to many relationship=============
+
+        Student st =  new Student();
+        University unv =  new University();
+        Computer cmp = new Computer();
+
+
+        List S_lis = new ArrayList();
+
+        st.setId(5);
+        st.setName("hhhhh");
+        st.setCGPA(3.0);
+        st.setAddress("bbbb");
+
+       // S_lis.add(st);
+
+        unv.setName("xxxxx");
+        unv.setUniId(110);
+        unv.setRating(6);
+        unv.getStd().add(st);
+        //unv.setStd(S_lis);
+
+        st.setUnv(unv);
+
+        //create object from configuration class
+        Configuration cnf = new Configuration().configure().addAnnotatedClass(University.class).addAnnotatedClass(Student.class);
+
+        //assign values to service registry
+        ServiceRegistry reg = new ServiceRegistryBuilder().applySettings(cnf.getProperties()).buildServiceRegistry();
+
+        //create session from session factory
+        SessionFactory scnFac = cnf.buildSessionFactory(reg);
+        Session session = scnFac.openSession();
+
+        //create transaction in order to do the ATAM properties
+        session.beginTransaction();
+
+        //save the object in to database using ORM
+        session.save(st);
+        session.save(unv);
+
+//        SQLQuery quearyText = session.createSQLQuery("delete from University  where UniId=111");
+//        quearyText.executeUpdate();
+       // Object result = quearyText.uniqueResult();
+
+
+
+        //Enb the transaction
+        session.getTransaction().commit();
+
 
     }
 
