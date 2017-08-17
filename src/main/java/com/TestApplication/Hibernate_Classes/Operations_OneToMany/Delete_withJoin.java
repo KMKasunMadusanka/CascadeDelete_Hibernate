@@ -2,6 +2,7 @@ package com.TestApplication.Hibernate_Classes.Operations_OneToMany;
 
 import com.TestApplication.DB_Entity_Classes.Student;
 import com.TestApplication.DB_Entity_Classes.University;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -47,9 +48,14 @@ public class Delete_withJoin {
         //create transaction in order to do the ATAM properties
         session.beginTransaction();
 
-        //save the object in to database using ORM
-        session.save(st);
-        session.save(unv);
+        try {
+            //save the object in to database using ORM
+            SQLQuery quearyText = session.createSQLQuery("delete from University  where UniId=100");
+            quearyText.executeUpdate();
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
 
 
         //Enb the transaction

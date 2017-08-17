@@ -18,22 +18,50 @@ public class Insert_withJoin {
 
         //===============Set Data to one to many relationship=============
 
-        Student st =  new Student();
-        University unv =  new University();
+        Student st1 =  new Student();
+        Student st2 =  new Student();
+        Student st3 =  new Student();
 
-        st.setId(6);
-        st.setName("kkkkkkk");
-        st.setCGPA(2.0);
-        st.setAddress("yyyyyyy");
+        University unv1 =  new University();
+        University unv2 =  new University();
 
+        //Student 1
+        st1.setId(1);
+        st1.setName("AAAAAAAA");
+        st1.setCGPA(1.0);
+        st1.setAddress("A123");
 
+        //Student 2
+        st2.setId(2);
+        st2.setName("BBBBBBBB");
+        st2.setCGPA(2.0);
+        st2.setAddress("B123");
 
-        unv.setName("uuu");
-        unv.setUniId(55);
-        unv.setRating(77);
-        unv.getStd().add(st);
+        //Student 3
+        st3.setId(6);
+        st3.setName("CCCCCCCC");
+        st3.setCGPA(3.0);
+        st3.setAddress("C123");
 
-        st.setUnv(unv);
+        //Uni 1
+        unv1.setName("SLIIT");
+        unv1.setUniId(100);
+        unv1.setRating(10);
+
+        //Uni2
+        unv2.setName("NIBM");
+        unv2.setUniId(200);
+        unv2.setRating(20);
+
+        //add student to university
+        unv1.getStd().add(st1);
+        unv1.getStd().add(st2);
+        unv2.getStd().add(st3);
+
+        //add Students for university
+        st1.setUnv(unv1);
+        st2.setUnv(unv1);
+        st3.setUnv(unv2);
 
         //create object from configuration class
         Configuration cnf = new Configuration().configure().addAnnotatedClass(University.class).addAnnotatedClass(Student.class);
@@ -49,8 +77,14 @@ public class Insert_withJoin {
         session.beginTransaction();
 
         //save the object in to database using ORM
-        session.save(st);
-        session.save(unv);
+        session.save(st1);
+        session.save(unv1);
+
+        session.save(st2);
+        session.save(unv2);
+
+        session.save(st3);
+
 
 
         //Enb the transaction

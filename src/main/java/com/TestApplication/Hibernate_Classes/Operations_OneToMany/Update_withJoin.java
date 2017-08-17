@@ -30,9 +30,16 @@ public class Update_withJoin {
         //create transaction in order to do the ATAM properties
         session.beginTransaction();
 
-        //update the table
-        SQLQuery quearyText = session.createSQLQuery("delete from Student  where Id=1");
-        quearyText.executeUpdate();
+        try {
+            //update the table
+            SQLQuery quearyText = session.createSQLQuery("Update University set UniId=10  where UniId=100");
+            quearyText.executeUpdate();
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+
+
 
 
 

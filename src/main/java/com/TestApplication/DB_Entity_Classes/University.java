@@ -1,7 +1,5 @@
 package com.TestApplication.DB_Entity_Classes;
 
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -21,8 +19,7 @@ public class University {
     private int UniId;
     private String Name;
     private int Rating;
-    @OneToMany(mappedBy = "unv")
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @OneToMany(mappedBy = "unv",cascade= CascadeType.ALL)
     private List<Student> std = new ArrayList<Student>();
 
     public int getUniId() {
@@ -57,13 +54,5 @@ public class University {
         this.std = std;
     }
 
-    @Override
-    public String toString() {
-        return "University{" +
-                "UniId=" + UniId +
-                ", Name='" + Name + '\'' +
-                ", Rating=" + Rating +
-                ", std=" + std +
-                '}';
-    }
+
 }

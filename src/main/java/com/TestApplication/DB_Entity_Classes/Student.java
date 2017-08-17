@@ -14,7 +14,6 @@ public class Student {
     private  double CGPA;
     private String Address;
 
-//    private Computer cmp;
     @ManyToOne
     private University unv;
 
@@ -51,13 +50,6 @@ public class Student {
         Address = address;
     }
 
-//    public Computer getCmp() {
-//        return cmp;
-//    }
-//
-//    public void setCmp(Computer cmp) {
-//        this.cmp = cmp;
-//    }
 
     public University getUnv() {
         return unv;
@@ -67,27 +59,5 @@ public class Student {
         this.unv = unv;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Student{" +
-//                "Id=" + Id +
-//                ", Name='" + Name + '\'' +
-//                ", CGPA=" + CGPA +
-//                ", Address='" + Address + '\'' +
-//                ", cmp=" + cmp +
-//                ", unv=" + unv +
-//                '}';
-//    }
 
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "Id=" + Id +
-                ", Name='" + Name + '\'' +
-                ", CGPA=" + CGPA +
-                ", Address='" + Address + '\'' +
-                ", unv=" + unv +
-                '}';
-    }
-}
+   }
