@@ -1,9 +1,7 @@
 package com.TestApplication.DB_Entity_Classes;
 import javax.persistence.*;
 
-/**
- * Created by kmkmadusanka on 8/16/2017.
- */
+
 
 @Entity
 public class Student {
@@ -19,43 +17,53 @@ public class Student {
 
 
     public int getId() {
+
         return Id;
     }
 
     public void setId(int id) {
+
         Id = id;
     }
 
     public String getName() {
+
         return Name;
     }
 
     public void setName(String name) {
+
         Name = name;
     }
 
     public double getCGPA() {
+
         return CGPA;
     }
 
     public void setCGPA(double CGPA) {
+
         this.CGPA = CGPA;
     }
 
     public String getAddress() {
+
         return Address;
     }
 
     public void setAddress(String address) {
+
         Address = address;
     }
 
 
     public University getUnv() {
+
         return unv;
     }
 
     public void setUnv(University unv) {
+
         this.unv = unv;
     }
 

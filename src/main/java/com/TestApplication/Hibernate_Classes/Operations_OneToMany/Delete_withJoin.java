@@ -16,24 +16,6 @@ public class Delete_withJoin {
 
     public static void  main(String [] args){
 
-        //===============Set Data to one to many relationship=============
-
-        Student st =  new Student();
-        University unv =  new University();
-
-        st.setId(6);
-        st.setName("kkkkkkk");
-        st.setCGPA(2.0);
-        st.setAddress("yyyyyyy");
-
-
-
-        unv.setName("uuu");
-        unv.setUniId(55);
-        unv.setRating(77);
-        unv.getStd().add(st);
-
-        st.setUnv(unv);
 
         //create object from configuration class
         Configuration cnf = new Configuration().configure().addAnnotatedClass(University.class).addAnnotatedClass(Student.class);
@@ -49,9 +31,12 @@ public class Delete_withJoin {
         session.beginTransaction();
 
         try {
-            //save the object in to database using ORM
-            SQLQuery quearyText = session.createSQLQuery("delete from University  where UniId=100");
-            quearyText.executeUpdate();
+            //delete the object in to database using ORM
+            SQLQuery quearyText1 = session.createSQLQuery("delete from student where unv_UniId=300");
+            quearyText1.executeUpdate();
+            SQLQuery quearyText2 = session.createSQLQuery("delete from university where UniId=300");
+            quearyText2.executeUpdate();
+
         }
         catch (Exception e){
             System.out.println(e);

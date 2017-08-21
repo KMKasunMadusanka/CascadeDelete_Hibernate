@@ -32,8 +32,18 @@ public class Update_withJoin {
 
         try {
             //update the table
-            SQLQuery quearyText = session.createSQLQuery("Update University set UniId=10  where UniId=100");
-            quearyText.executeUpdate();
+//            SQLQuery quearyText1 = session.createSQLQuery("delete from student where unv_UniId is Null");
+//            quearyText1.executeUpdate();
+//            SQLQuery quearyText2 = session.createSQLQuery("update student set unv_UniId=null where unv_UniId=100");
+//            quearyText2.executeUpdate();
+//            SQLQuery quearyText3 = session.createSQLQuery("update university set UniId=300 where UniId=100;");
+//            quearyText3.executeUpdate();
+//            SQLQuery quearyText4 = session.createSQLQuery("update student set unv_UniId=300 where unv_UniId is null;");
+//            quearyText4.executeUpdate();
+
+            SQLQuery quearyText1 = session.createSQLQuery("update student set Name='MMMMMM' where Id=1");
+            quearyText1.executeUpdate();
+
         }
         catch (Exception e){
             System.out.println(e);
